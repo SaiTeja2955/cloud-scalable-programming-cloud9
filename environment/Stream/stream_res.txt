@@ -1,0 +1,46 @@
+=====> Kafka Stream Processing Started (Sequential + Parallel modes for each workload)
+
+=====> Kafka Stream Processing Started (Sequential + Parallel modes for each workload)
+
+
+=======> Processing Workload: 10000 Tweets
+  Sequential | Time: 3.12s | CPU: 76.45% | Mem: 62.1% | Throughput: 3207.49 rec/s
+  Parallel   | Time: 2.51s | CPU: 49.4% | Mem: 63.3% | Throughput: 3979.13 rec/s
+
+=======> Processing Workload: 100000 Tweets
+  Sequential | Time: 32.16s | CPU: 77.4% | Mem: 64.4% | Throughput: 3109.35 rec/s
+  Parallel   | Time: 25.52s | CPU: 81.6% | Mem: 67.15% | Throughput: 3918.48 rec/s
+
+=======> Processing Workload: 200000 Tweets
+  Sequential | Time: 63.78s | CPU: 77.2% | Mem: 69.1% | Throughput: 3135.81 rec/s
+  Parallel   | Time: 49.79s | CPU: 99.5% | Mem: 70.8% | Throughput: 4016.51 rec/s
+
+=====> FINAL STREAM PROCESSING RESULTS
+
+
+Workload: 10000 Tweets
+  Sequential:
+    Time: 3.12s | CPU: 76.45% | Mem: 62.1% | Throughput: 3207.49 rec/s
+  Parallel:
+    Time: 2.51s | CPU: 49.4% | Mem: 63.3% | Throughput: 3979.13 rec/s
+
+Workload: 100000 Tweets
+  Sequential:
+    Time: 32.16s | CPU: 77.4% | Mem: 64.4% | Throughput: 3109.35 rec/s
+  Parallel:
+    Time: 25.52s | CPU: 81.6% | Mem: 67.15% | Throughput: 3918.48 rec/s
+
+Workload: 200000 Tweets
+  Sequential:
+    Time: 63.78s | CPU: 77.2% | Mem: 69.1% | Throughput: 3135.81 rec/s
+  Parallel:
+    Time: 49.79s | CPU: 99.5% | Mem: 70.8% | Throughput: 4016.51 rec/s
+
+=====> Plots saved to stream_results/
+
+
+=====> Stream processing ended cleanly.
+
+
+
+Process exited with code: 0

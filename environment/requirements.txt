@@ -1,0 +1,9 @@
+pandas
+numpy
+seaborn
+psutil
+matplotlib
+multiprocessing
+kafka-python
+textblob
+collections

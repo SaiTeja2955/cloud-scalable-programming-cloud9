@@ -1,0 +1,92 @@
+Dataset already exists at /home/ec2-user/environment/x23418613-c9-env/environment/Dataset/covidvaccine.csv, skipping download.
+/home/ec2-user/environment/x23418613-c9-env/environment/MapReduce/map_reduce_code.py:36: DtypeWarning: Columns (5,6,7,12) have mixed types. Specify dtype option on import or set low_memory=False.
+  df = pd.read_csv(DATASET_PATH)
+
+
+=====> Sequential Processing Started
+Sequential | 10000 tweets: Time: 3.25s | CPU: 55.90% | Mem: 31.50%
+Sequential | 100000 tweets: Time: 32.83s | CPU: 81.65% | Mem: 32.25%
+Sequential | 200000 tweets: Time: 65.14s | CPU: 50.10% | Mem: 33.20%
+
+=====> Parallel Processing Started
+Parallel   | 10000 tweets: Time: 1.70s | CPU: 73.70% | Mem: 33.00%
+Parallel   | 100000 tweets: Time: 17.37s | CPU: 74.15% | Mem: 34.30%
+Parallel   | 200000 tweets: Time: 34.89s | CPU: 72.80% | Mem: 38.10%
+=> Uploaded time graph to s3://x23411520-s3-bucket/graphs/time_comparison.png
+=> Uploaded cpu graph to s3://x23411520-s3-bucket/graphs/cpu_comparison.png
+=> Uploaded mem graph to s3://x23411520-s3-bucket/graphs/mem_comparison.png
+
+=====> Generating WordCloud for full dataset
+=> WordCloud saved to /home/ec2-user/environment/x23418613-c9-env/environment/results/wordcloud.png
+=> Uploaded WordCloud to s3://x23411520-s3-bucket/graphs/wordcloud.png
+
+=====> Generating Top 10 Hashtags Bar Chart
+/home/ec2-user/environment/x23418613-c9-env/environment/MapReduce/map_reduce_code.py:222: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.barplot(x=list(hashtags), y=list(counts), palette='viridis')
+=> Top 10 Hashtags chart saved to /home/ec2-user/environment/x23418613-c9-env/environment/results/top10_hashtags.png
+=> Uploaded to s3://x23411520-s3-bucket/graphs/top10_hashtags.png
+
+=====> Generating Sentiment Distribution Chart
+/home/ec2-user/environment/x23418613-c9-env/environment/MapReduce/map_reduce_code.py:253: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.barplot(x=list(sentiment_counts.keys()), y=list(sentiment_counts.values()), palette='pastel')
+=> Sentiment Distribution chart saved to /home/ec2-user/environment/x23418613-c9-env/environment/results/sentiment_distribution.png
+=> Uploaded to s3://x23411520-s3-bucket/graphs/sentiment_distribution.png
+
+
+=====> Final Results for All Workloads
+
+===== Workload: 10000 tweets =====
+Sequential:
+  Avg Sentiment     : 0.0979
+  Avg Word Count    : 18.55
+  Avg Tweet Length  : 128.86
+  Top 10 Words : [('t', 10612), ('co', 9824), ('https', 9777), ('the', 5984), ('covidvaccine', 4962), ('vaccine', 3873), ('to', 3860), ('a', 3040), ('of', 2726), ('covid', 2286)]
+  Top 10 Tags  : [('#CovidVaccine', 3362), ('#COVID19', 845), ('#covidvaccine', 390), ('#Russia', 352), ('#coronavirus', 276), ('#RussianVaccine', 272), ('#CovidVaccine…', 256), ('#vaccine', 248), ('#COVIDVaccine', 177), ('#CovidVaccine.', 172)]
+
+Parallel:
+  Avg Sentiment     : 0.0979
+  Avg Word Count    : 18.55
+  Avg Tweet Length  : 128.86
+  Top 10 Words : [('t', 10612), ('co', 9824), ('https', 9777), ('the', 5984), ('covidvaccine', 4962), ('vaccine', 3873), ('to', 3860), ('a', 3040), ('of', 2726), ('covid', 2286)]
+  Top 10 Tags  : [('#CovidVaccine', 3362), ('#COVID19', 845), ('#covidvaccine', 390), ('#Russia', 352), ('#coronavirus', 276), ('#RussianVaccine', 272), ('#CovidVaccine…', 256), ('#vaccine', 248), ('#COVIDVaccine', 177), ('#CovidVaccine.', 172)]
+
+===== Workload: 100000 tweets =====
+Sequential:
+  Avg Sentiment     : 0.1166
+  Avg Word Count    : 18.89
+  Avg Tweet Length  : 128.28
+  Top 10 Words : [('t', 103887), ('co', 96071), ('https', 95600), ('the', 66978), ('covidvaccine', 51113), ('to', 44315), ('of', 28425), ('a', 26607), ('vaccine', 24703), ('and', 24423)]
+  Top 10 Tags  : [('#CovidVaccine', 38701), ('#COVID19', 8887), ('#covidvaccine', 2698), ('#vaccine', 2098), ('#CovidVaccine…', 1690), ('#coronavirus', 1680), ('#COVIDVaccine', 1466), ('#CovidVaccine.', 1395), ('#COVID', 1136), ('#COVIDvaccine', 1021)]
+
+Parallel:
+  Avg Sentiment     : 0.1166
+  Avg Word Count    : 18.89
+  Avg Tweet Length  : 128.28
+  Top 10 Words : [('t', 103887), ('co', 96071), ('https', 95600), ('the', 66978), ('covidvaccine', 51113), ('to', 44315), ('of', 28425), ('a', 26607), ('vaccine', 24703), ('and', 24423)]
+  Top 10 Tags  : [('#CovidVaccine', 38701), ('#COVID19', 8887), ('#covidvaccine', 2698), ('#vaccine', 2098), ('#CovidVaccine…', 1690), ('#coronavirus', 1680), ('#COVIDVaccine', 1466), ('#CovidVaccine.', 1395), ('#COVID', 1136), ('#COVIDvaccine', 1021)]
+
+===== Workload: 200000 tweets =====
+Sequential:
+  Avg Sentiment     : 0.1147
+  Avg Word Count    : 19.08
+  Avg Tweet Length  : 129.12  Top 10 Words : [('t', 206547), ('co', 190619), ('https', 189683), ('the', 129858), ('covidvaccine', 106315), ('to', 88088), ('of', 56095), ('a', 52740), ('and', 49546), ('in', 47962)]
+  Top 10 Tags  : [('#CovidVaccine', 70070), ('#COVID19', 17183), ('#COVIDVaccine', 13767), ('#covidvaccine', 5610), ('#vaccine', 3888), ('#CovidVaccine…', 2699), ('#coronavirus', 2655), ('#COVIDvaccine', 2388), ('#CovidVaccine.', 2378), ('#COVID', 2254)]
+
+Parallel:
+  Avg Sentiment     : 0.1147
+  Avg Word Count    : 19.08
+  Avg Tweet Length  : 129.12
+  Top 10 Words : [('t', 206547), ('co', 190619), ('https', 189683), ('the', 129858), ('covidvaccine', 106315), ('to', 88088), ('of', 56095), ('a', 52740), ('and', 49546), ('in', 47962)]
+  Top 10 Tags  : [('#CovidVaccine', 70070), ('#COVID19', 17183), ('#COVIDVaccine', 13767), ('#covidvaccine', 5610), ('#vaccine', 3888), ('#CovidVaccine…', 2699), ('#coronavirus', 2655), ('#COVIDvaccine', 2388), ('#CovidVaccine.', 2378), ('#COVID', 2254)]
+
+All workloads processed, graphs uploaded, visualizations done and results printed.
+
+
+Process exited with code: 0
+Pane is dead
