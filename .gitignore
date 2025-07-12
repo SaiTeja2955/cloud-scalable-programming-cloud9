@@ -1,0 +1,23 @@
+# Ignore all logs
+*.log
+*.log.*
+
+# Ignore Python virtual environment
+venv/
+environment/venv/
+
+# Ignore matplotlib/numpy test data
+*.csv
+
+# But allow your actual dataset
+!environment/Dataset/covidvaccine.csv
+
+# Ignore IDE/system files
+*.pyc
+__pycache__/
+.DS_Store
+
+# Ignore generated result folders if not needed
+results_2/
+temp/
+
